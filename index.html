@@ -222,6 +222,110 @@
             color: #2c5282;
         }
 
+        .image-slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f7fafc;
+            padding: 2rem;
+        }
+
+        .slide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .slide-placeholder {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ebf4ff 0%, #bee3f8 100%);
+            color: #2c5282;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 82, 130, 0.8);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background: rgba(43, 108, 176, 0.9);
+        }
+
+        .slider-btn.prev {
+            left: 10px;
+        }
+
+        .slider-btn.next {
+            right: 10px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: white;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #3182ce;
+        }
+
         footer {
             background: #2c5282;
             color: white;
@@ -586,305 +690,354 @@ Rotated position: [0.7071, 4.9497]</div>
             <h2>Laboratory Implementations</h2>
 
             <h3>Lab 1: Spring-Mass System Analysis</h3>
-            <p><strong>Problem:</strong> Two masses connected by springs. Find displacement under applied force.</p>
-
-            <h4>Physics:</h4>
-            <div class="formula">Force on mass m₁: F₁ = -k₁x₁ + k₂(x₂ - x₁)
-Force on mass m₂: F₂ = -k₂(x₂ - x₁)
-
-At equilibrium: Sum of forces = 0
-Matrix form: <strong>Kx = F</strong>
-where K is stiffness matrix</div>
-
-            <h4>Parameters:</h4>
+            <p><strong>Date:</strong> 06-10-2025</p>
+            
+            <h4>Parameters and Mathematical Concept:</h4>
             <ul>
-                <li>k₁ = 10 N/m (spring constant)</li>
-                <li>k₂ = 5 N/m</li>
-                <li>F = 20 N (applied force)</li>
+                <li>Spring stiffness constants: k₁, k₂, k₃, k₄, k₅, k₆ (N/m)</li>
+                <li>External forces: F₁, F₂, F₃, F₄ (N)</li>
+                <li>Displacement variables: u₁, u₂, u₃, u₄</li>
+                <li>Number of degrees of freedom (DOF): 4</li>
+                <li>System type: 1D linear spring system</li>
             </ul>
 
-            <div class="code-section">import numpy as np
+            <div class="formula"><strong>Governing Equation:</strong>
+[K]{u} = {F}</div>
 
-# Spring constants
-k1, k2 = 10, 5
-
-# Stiffness matrix for 2-mass system
-# K = [[k1+k2, -k2], [-k2, k2]]
-K = np.array([[k1+k2, -k2], [-k2, k2]])
-
-# Applied forces
-F = np.array([20, 0])  # 20N on mass 1, 0 on mass 2
-
-# Solve: K*x = F
-displacements = np.linalg.solve(K, F)
-
-print(f"Stiffness Matrix K:")
-print(K)
-print(f"\nApplied Forces: {F}")
-print(f"\nDisplacements:")
-print(f"x1 = {displacements[0]:.4f} m")
-print(f"x2 = {displacements[1]:.4f} m")</div>
-
-            <div class="output-section"><strong>Output:</strong>
-Stiffness Matrix K:
-[[15 -5]
- [-5  5]]
-
-Applied Forces: [20  0]
-
-Displacements:
-x1 = 2.0000 m
-x2 = 2.0000 m</div>
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slides" id="lab1-slides">
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 1 - Page 1<br><br>
+                                Upload your PDF page images here<br>
+                                (Question and Parameters)
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 1 - Page 2<br><br>
+                                Analytical Solution
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 1 - Page 3<br><br>
+                                GeoGebra Screenshots
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 1 - Page 4<br><br>
+                                Results and Analysis
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide('lab1', -1)">‹</button>
+                    <button class="slider-btn next" onclick="changeSlide('lab1', 1)">›</button>
+                </div>
+                <div class="slider-dots" id="lab1-dots"></div>
+            </div>
 
             <div class="highlight-box">
-                <h4>Physical Interpretation:</h4>
-                <p>Both masses displace equally at 2m. The force on mass 1 compresses spring k₁, which pushes mass 2 through spring k₂.</p>
+                <h4>Solution Method:</h4>
+                <p>Analytical solution using matrix methods and GeoGebra verification for displacement calculations in a multi-spring system.</p>
             </div>
 
             <h3>Lab 2: Truss Member Force Analysis</h3>
-            <p><strong>Problem:</strong> Find internal forces in truss members under external load.</p>
+            <p><strong>Date:</strong> 13-10-2025</p>
 
-            <h4>Theory:</h4>
-            <p>At each joint, sum of forces in x and y directions = 0</p>
-            <div class="formula">ΣFₓ = 0
-ΣFᵧ = 0
-
-This gives equilibrium equations for each joint:
-<strong>A·F = P</strong></div>
-
-            <h4>Example Configuration:</h4>
+            <h4>Parameters and Mathematical Concept:</h4>
             <ul>
-                <li>3-member triangular truss</li>
-                <li>10 kN vertical load at apex</li>
-                <li>Members at specific angles</li>
+                <li>Truss type: Planar triangular truss</li>
+                <li>Members: AB, BC, AC</li>
+                <li>Number of joints: 3 (A, B, C)</li>
+                <li>Support at A: Pinned (horizontal & vertical reactions)</li>
+                <li>Support at C: Roller (vertical reaction only)</li>
+                <li>Applied load: 600 N downward at joint B</li>
+                <li>Member lengths:
+                    <ul>
+                        <li>AB = 5 m</li>
+                        <li>BC = 5 m</li>
+                        <li>AC = 6 m</li>
+                    </ul>
+                </li>
+                <li>Height of truss: 4 m</li>
+                <li>Unknown axial forces: F₁(AB), F₂(BC), F₃(AC)</li>
+                <li>Degrees of freedom: 0 (statically determinate structure)</li>
             </ul>
 
-            <div class="code-section">import numpy as np
-
-# Equilibrium matrix (force-geometry relationship)
-# Each row: force balance in x or y at a joint
-A = np.array([[1, 0, 0.6],      # Joint 1, x-direction
-              [0, -1, 0.8],      # Joint 1, y-direction
-              [0, 1, 0.8]])      # Joint 2, y-direction
-
-# External loads (kN)
-P = np.array([0, 0, 10])  # 10 kN downward
-
-# Solve for member forces
-F = np.linalg.solve(A, P)
-
-print(f"Member Forces (kN):")
-print(f"F1 = {F[0]:.2f} kN (compression)" if F[0] < 0 else f"F1 = {F[0]:.2f} kN (tension)")
-print(f"F2 = {F[1]:.2f} kN (compression)" if F[1] < 0 else f"F2 = {F[1]:.2f} kN (tension)")
-print(f"F3 = {F[2]:.2f} kN (compression)" if F[2] < 0 else f"F3 = {F[2]:.2f} kN (tension)")</div>
-
-            <div class="output-section"><strong>Output:</strong>
-Member Forces (kN):
-F1 = -3.75 kN (compression)
-F2 = 5.00 kN (tension)
-F3 = 6.25 kN (tension)</div>
-
-            <div class="highlight-box">
-                <h4>Analysis:</h4>
-                <ul>
-                    <li>Member 1: Compression (negative) - being pushed</li>
-                    <li>Members 2,3: Tension (positive) - being pulled</li>
-                    <li>Design must account for member type and material properties</li>
-                </ul>
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slides" id="lab2-slides">
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 2 - Page 1<br><br>
+                                Question and Parameters
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 2 - Page 2<br><br>
+                                Analytical Solution
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 2 - Page 3<br><br>
+                                GeoGebra Screenshots
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 2 - Page 4<br><br>
+                                Results and Analysis
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide('lab2', -1)">‹</button>
+                    <button class="slider-btn next" onclick="changeSlide('lab2', 1)">›</button>
+                </div>
+                <div class="slider-dots" id="lab2-dots"></div>
             </div>
 
-            <h3>Lab 3: Gaussian Elimination - Multi-Variable System</h3>
-            <h4>Problem: Solve 3×3 System</h4>
-            <div class="formula">x + 2y + z = 9
-2x + 5y + z = 20
-3x + y + 2z = 13</div>
-
-            <div class="code-section">import numpy as np
-
-# Coefficient matrix
-A = np.array([[1, 2, 1],
-              [2, 5, 1],
-              [3, 1, 2]], dtype=float)
-
-# Constants vector
-b = np.array([9, 20, 13], dtype=float)
-
-# Solve using numpy (Gaussian elimination internally)
-solution = np.linalg.solve(A, b)
-
-print(f"Solution:")
-print(f"x = {solution[0]:.4f}")
-print(f"y = {solution[1]:.4f}")
-print(f"z = {solution[2]:.4f}")
-
-# Verify solution
-verification = A @ solution
-print(f"\nVerification (A·x = b):")
-print(f"Expected: {b}")
-print(f"Got: {verification}")</div>
-
-            <div class="output-section"><strong>Output:</strong>
-Solution:
-x = 1.0000
-y = 2.0000
-z = 3.0000
-
-Verification (A·x = b):
-Expected: [ 9. 20. 13.]
-Got: [ 9. 20. 13.]</div>
-
-            <h3>Lab 4: LU Decomposition - Multiple Solutions</h3>
-            <h4>Scenario: Spring System with Different Loads</h4>
-            <p>Decompose stiffness matrix once, then solve for different force vectors efficiently:</p>
-
-            <div class="code-section">from scipy.linalg import lu_factor, lu_solve
-import numpy as np
-
-# Stiffness matrix (3-mass spring system)
-A = np.array([[30, -10, 0],
-              [-10, 30, -20],
-              [0, -20, 20]], dtype=float)
-
-# Different loading conditions
-loads = {
-    "Case 1": np.array([100, 0, 0]),
-    "Case 2": np.array([0, 100, 0]),
-    "Case 3": np.array([50, 50, 50])
-}
-
-# LU factorization (done once)
-lu, piv = lu_factor(A)
-
-print("LU Factorization: A = LU")
-print("\nSolving for different loads:\n")
-
-for case_name, load_vector in loads.items():
-    # Solve using pre-factored LU
-    displacement = lu_solve((lu, piv), load_vector)
-    print(f"{case_name} (Load = {load_vector}):")
-    print(f"  Displacements: {displacement}")
-    print()</div>
-
-            <div class="output-section"><strong>Output:</strong>
-LU Factorization: A = LU
-
-Solving for different loads:
-
-Case 1 (Load = [100   0   0]):
-  Displacements: [4.33 1.44 0.72]
-
-Case 2 (Load = [  0 100   0]):
-  Displacements: [2.86 4.29 2.14]
-
-Case 3 (Load = [50 50 50]):
-  Displacements: [4.76 3.81 3.33]</div>
-
-            <h3>Lab 5: Robot Kinematics - 2 Link Arm</h3>
-            <p><strong>Forward Kinematics:</strong> Given joint angles θ₁, θ₂, find end-effector position (x, y)</p>
-
-            <h4>Transformation Equations:</h4>
-            <div class="formula">x = L₁·cos(θ₁) + L₂·cos(θ₁ + θ₂)
-y = L₁·sin(θ₁) + L₂·sin(θ₁ + θ₂)
-
-where L₁, L₂ are link lengths</div>
-
-            <div class="code-section">import numpy as np
-
-# Link lengths (meters)
-L1, L2 = 2.0, 1.5
-
-# Joint angles (degrees)
-theta1_deg, theta2_deg = 30, 45
-
-# Convert to radians
-theta1 = np.radians(theta1_deg)
-theta2 = np.radians(theta2_deg)
-
-# Forward kinematics
-x = L1 * np.cos(theta1) + L2 * np.cos(theta1 + theta2)
-y = L1 * np.sin(theta1) + L2 * np.sin(theta1 + theta2)
-
-print(f"2-Link Robot Arm")
-print(f"Link 1 length: {L1} m")
-print(f"Link 2 length: {L2} m")
-print(f"Joint angles: θ₁ = {theta1_deg}°, θ₂ = {theta2_deg}°")
-print(f"\nEnd-effector position:")
-print(f"x = {x:.4f} m")
-print(f"y = {y:.4f} m")
-print(f"Distance from origin: {np.sqrt(x**2 + y**2):.4f} m")</div>
-
-            <div class="output-section"><strong>Output:</strong>
-2-Link Robot Arm
-Link 1 length: 2.0 m
-Link 2 length: 1.5 m
-Joint angles: θ₁ = 30°, θ₂ = 45°
-
-End-effector position:
-x = 2.1203 m
-y = 2.4489 m
-Distance from origin: 3.2457 m</div>
-
             <div class="highlight-box">
-                <h4>Workspace Analysis:</h4>
-                <ul>
-                    <li>Maximum reach: L₁ + L₂ = 3.5 m</li>
-                    <li>Minimum reach: |L₁ - L₂| = 0.5 m</li>
-                    <li>The arm can reach any point in the annular region between these bounds</li>
-                </ul>
+                <h4>Solution Method:</h4>
+                <p>Equilibrium analysis using joint method and matrix formulation. GeoGebra used for visualization and verification of member forces.</p>
             </div>
 
-            <h3>Lab 6: 3-Link Robot Arm Extended</h3>
-            <h4>Forward Kinematics for 3 DOF</h4>
-            <p>End-effector position with three joints:</p>
+            <h3>Lab 3: Gaussian Elimination & LU Decomposition</h3>
+            <p><strong>Date:</strong> 13-11-2025</p>
 
-            <div class="code-section">import numpy as np
+            <h4>Problem 1: Gauss Elimination Method</h4>
+            <p>Find displacement u₁, u₂, u₃, u₄</p>
+            
+            <div class="formula"><strong>Governing Equation:</strong>
+Ax = b</div>
 
-# Link lengths (meters)
-L1, L2, L3 = 1.0, 0.8, 0.6
+            <h4>Problem 2: LU Decomposition Method</h4>
+            <p>Solve the following system:</p>
+            <div class="formula">i)   x₁ - 3x₂ + x₃ = -5
+ii)  2x₁ - 2x₂ + 4x₃ = 0
+iii) 3x₁ + 2x₂ + 5x₃ = 7</div>
 
-# Joint angles (radians)
-theta1 = np.radians(30)
-theta2 = np.radians(45)
-theta3 = np.radians(20)
+            <div class="formula"><strong>Governing Equations:</strong>
+A = LU
+LUx = b</div>
 
-# Calculate position of each joint
-x1 = L1 * np.cos(theta1)
-y1 = L1 * np.sin(theta1)
+            <div class="output-section"><strong>Results:</strong>
 
-x2 = x1 + L2 * np.cos(theta1 + theta2)
-y2 = y1 + L2 * np.sin(theta1 + theta2)
+Problem 1 - Displacement fields via Gauss Elimination:
+• u₁ = 0.2250
+• u₂ = 0.4021
+• u₃ = 0.4554
+• u₄ = 0.4965
 
-x3 = x2 + L3 * np.cos(theta1 + theta2 + theta3)
-y3 = y2 + L3 * np.sin(theta1 + theta2 + theta3)
+Problem 2 - LU Decomposition solution verified using GeoGebra</div>
 
-print(f"3-Link Robot Configuration")
-print(f"Θ₁ = 30°, Θ₂ = 45°, Θ₃ = 20°")
-print(f"\nJoint Positions:")
-print(f"Base: (0.000, 0.000)")
-print(f"Joint 1: ({x1:.4f}, {y1:.4f})")
-print(f"Joint 2: ({x2:.4f}, {y2:.4f})")
-print(f"End-Effector: ({x3:.4f}, {y3:.4f})")
-print(f"\nTotal Reach: {np.sqrt(x3**2 + y3**2):.4f} m")</div>
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slides" id="lab3-slides">
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 3 - Page 1<br><br>
+                                Question and Parameters
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 3 - Page 2<br><br>
+                                Analytical Solution
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 3 - Page 3<br><br>
+                                GeoGebra - Problem 1
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 3 - Page 4<br><br>
+                                GeoGebra - Problem 2
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 3 - Page 5<br><br>
+                                Results and Analysis
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide('lab3', -1)">‹</button>
+                    <button class="slider-btn next" onclick="changeSlide('lab3', 1)">›</button>
+                </div>
+                <div class="slider-dots" id="lab3-dots"></div>
+            </div>
 
-            <div class="output-section"><strong>Output:</strong>
-3-Link Robot Configuration
-Θ₁ = 30°, Θ₂ = 45°, Θ₃ = 20°
+            <h3>Lab 4: Robot Kinematics - 2R and 3R Manipulators</h3>
+            <p><strong>Date:</strong> 04-12-2025</p>
 
-Joint Positions:
-Base: (0.000, 0.000)
-Joint 1: (0.8660, 0.5000)
-Joint 2: (1.4821, 1.4269)
-End-Effector: (1.9835, 1.8947)
+            <h4>Parameters and Mathematical Concept:</h4>
+            <ul>
+                <li>L₁: Length of link 1</li>
+                <li>L₂: Length of link 2</li>
+                <li>θ₁: Joint-1 angle</li>
+                <li>θ₂: Joint-2 angle</li>
+                <li>x: End-effector x-coordinate</li>
+                <li>y: End-effector y-coordinate</li>
+                <li>Degrees of freedom (DOF): 2</li>
+                <li>Joint type: Revolute–Revolute</li>
+            </ul>
 
-Total Reach: 2.7345 m</div>
+            <h4>2R Manipulator - Analytical Solution</h4>
+            <p><strong>Forward Kinematics:</strong></p>
+            <div class="formula">x = L₁cos θ₁ + L₂cos(θ₁ + θ₂)
+y = L₁sin θ₁ + L₂sin(θ₁ + θ₂)</div>
+
+            <p><strong>Inverse Kinematics:</strong></p>
+            <div class="formula">cos θ₂ = (x² + y² - L₁² - L₂²) / (2L₁L₂)
+
+θ₂ = cos⁻¹((x² + y² - L₁² - L₂²) / (2L₁L₂))
+
+θ₁ = tan⁻¹(y/x) - tan⁻¹(L₂sin θ₂ / (L₁ + L₂cos θ₂))</div>
+
+            <h4>3R Manipulator - Analytical Solution (Planar)</h4>
+            <p><strong>Forward Kinematics:</strong></p>
+            <div class="formula">x = L₁cos θ₁ + L₂cos(θ₁ + θ₂) + L₃cos(θ₁ + θ₂ + θ₃)
+y = L₁sin θ₁ + L₂sin(θ₁ + θ₂) + L₃sin(θ₁ + θ₂ + θ₃)
+ϕ = θ₁ + θ₂ + θ₃</div>
+
+            <p><strong>Inverse Kinematics:</strong></p>
+            <div class="formula">x' = x - L₃cos ϕ
+y' = y - L₃sin ϕ
+
+cos θ₂ = (x'² + y'² - L₁² - L₂²) / (2L₁L₂)
+
+θ₂ = cos⁻¹(⋅)
+
+θ₁ = tan⁻¹(y'/x') - tan⁻¹(L₂sin θ₂ / (L₁ + L₂cos θ₂))
+
+θ₃ = ϕ - θ₁ - θ₂</div>
+
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slides" id="lab4-slides">
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 4 - Page 1<br><br>
+                                Question
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 4 - Page 2<br><br>
+                                Parameters and Analytical Solution
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 4 - Page 3<br><br>
+                                3R Manipulator - GeoGebra
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 4 - Page 4<br><br>
+                                2R Manipulator - GeoGebra
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 4 - Page 5<br><br>
+                                Results - 3R Manipulator
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 4 - Page 6<br><br>
+                                Results - 2R Manipulator
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide('lab4', -1)">‹</button>
+                    <button class="slider-btn next" onclick="changeSlide('lab4', 1)">›</button>
+                </div>
+                <div class="slider-dots" id="lab4-dots"></div>
+            </div>
 
             <div class="highlight-box">
-                <h4>Significance:</h4>
-                <ul>
-                    <li>3 DOF allows reaching any position in a circular workspace</li>
-                    <li>Configurations with same endpoint but different θ values exist</li>
-                    <li>Inverse kinematics (given position, find angles) is more complex</li>
-                </ul>
+                <h4>Solution Method:</h4>
+                <p>Both 2R and 3R manipulators analyzed using forward and inverse kinematics equations. GeoGebra used for graphical visualization of robot configurations and workspace analysis.</p>
+            </div>
+
+            <h3>Lab 5: Multi-Mass Spring System</h3>
+            <p><strong>Date:</strong> 07-01-2016</p>
+            <p><strong>Special Conditions:</strong> k₄ = 30, f₃ = 0</p>
+
+            <h4>Parameters and Mathematical Concept:</h4>
+            <ul>
+                <li>Four masses: m₁, m₂, m₃, m₄</li>
+                <li>One-dimensional horizontal motion</li>
+                <li>Frictionless surface</li>
+                <li>Linear springs connecting the masses</li>
+                <li>Spring stiffness values:
+                    <ul>
+                        <li>k₁ = 20 N/m (wall–m₁)</li>
+                        <li>k₂ = 20 N/m (m₁–m₂)</li>
+                        <li>k₃ = 30 N/m (m₂–m₃)</li>
+                        <li>k₄ = 30 N/m (m₃–m₄)</li>
+                    </ul>
+                </li>
+                <li>External forces applied:
+                    <ul>
+                        <li>f₁ = 15 N</li>
+                        <li>f₂ = 0 N</li>
+                        <li>f₃ = 0 N</li>
+                        <li>f₄ = 20 N</li>
+                    </ul>
+                </li>
+                <li>Each mass has one degree of freedom</li>
+                <li>Analysis carried out under static equilibrium condition</li>
+            </ul>
+
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slides" id="lab5-slides">
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 5 - Page 1<br><br>
+                                Question and Parameters
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 5 - Page 2<br><br>
+                                Analytical Solution - Part 1
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 5 - Page 3<br><br>
+                                Analytical Solution - Part 2
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-placeholder">
+                                📄 Lab 5 - Page 4<br><br>
+                                GeoGebra Screenshots and Results
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide('lab5', -1)">‹</button>
+                    <button class="slider-btn next" onclick="changeSlide('lab5', 1)">›</button>
+                </div>
+                <div class="slider-dots" id="lab5-dots"></div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Solution Method:</h4>
+                <p>Static equilibrium analysis of a four-mass spring system using stiffness matrix formulation and matrix solution techniques. GeoGebra verification for displacement calculations.</p>
             </div>
         </section>
 
@@ -919,5 +1072,68 @@ Total Reach: 2.7345 m</div>
         <p>© 2025 Linear Algebra in Engineering | Developed by Shlok Vengurlekar | <a href="https://github.com">GitHub</a></p>
         <p style="margin-top: 0.5rem;">Course: 25EMAB202 | KLE Technological University, Hubli</p>
     </footer>
+
+    <script>
+        // Slider functionality
+        const sliders = {};
+
+        function initSlider(labId) {
+            const slides = document.getElementById(`${labId}-slides`);
+            const dotsContainer = document.getElementById(`${labId}-dots`);
+            const slideCount = slides.children.length;
+            
+            sliders[labId] = {
+                currentSlide: 0,
+                totalSlides: slideCount,
+                slidesElement: slides
+            };
+
+            // Create dots
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => goToSlide(labId, i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function changeSlide(labId, direction) {
+            const slider = sliders[labId];
+            slider.currentSlide += direction;
+            
+            if (slider.currentSlide < 0) {
+                slider.currentSlide = slider.totalSlides - 1;
+            } else if (slider.currentSlide >= slider.totalSlides) {
+                slider.currentSlide = 0;
+            }
+            
+            updateSlider(labId);
+        }
+
+        function goToSlide(labId, slideIndex) {
+            sliders[labId].currentSlide = slideIndex;
+            updateSlider(labId);
+        }
+
+        function updateSlider(labId) {
+            const slider = sliders[labId];
+            const offset = -slider.currentSlide * 100;
+            slider.slidesElement.style.transform = `translateX(${offset}%)`;
+            
+            // Update dots
+            const dots = document.getElementById(`${labId}-dots`).children;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === slider.currentSlide);
+            }
+        }
+
+        // Initialize all sliders when page loads
+        window.addEventListener('load', () => {
+            ['lab1', 'lab2', 'lab3', 'lab4', 'lab5'].forEach(labId => {
+                initSlider(labId);
+            });
+        });
+    </script>
 </body>
 </html>
